@@ -13,8 +13,8 @@ namespace WorkingWithSpecifiCrows_Columns
             int lowLimitRandom = 1;
             int highLimitRandom = 9;
 
-            int firstColumn = 0;
-            int secondLine = 1;
+            int column = 0;
+            int line = 1;
 
             int multiplication = 1;
             int sum = 0;
@@ -28,23 +28,26 @@ namespace WorkingWithSpecifiCrows_Columns
                 {
                     array[i, j] = random.Next(lowLimitRandom, highLimitRandom + 1);
                     Console.Write(array[i, j] + " ");
-
-                    if (i == secondLine)
-                    {
-                        sum += array[i, j];
-                    }
-
-                    if (j == firstColumn)
-                    {
-                        multiplication *= array[i, j];
-                    }
                 }
 
                 Console.WriteLine();
             }
 
-            Console.WriteLine($"Сумма строки №" + (secondLine + 1) + $" = {sum}.\n" +
-                $"Произведение столбца №" + (firstColumn + 1) + $" = {multiplication}");
+            for (int j = 0; j < array.GetLength(0); j++)
+            {
+                sum += array[line, j];
+            }
+
+            for (int i = 0; i < array.GetLength(1); i++)
+            {
+                multiplication *= array[i, column];
+            }
+
+            int lineWriteNumber = line + 1;
+            int columnWriteNumber = column + 1;
+
+            Console.WriteLine($"Сумма строки № {lineWriteNumber} = {sum}.\n" +
+                $"Произведение столбца №{columnWriteNumber} = {multiplication}");
         }
     }
 }
